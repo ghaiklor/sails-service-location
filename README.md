@@ -40,15 +40,13 @@ That's it, you can create location instances for your needs in your project.
 ```javascript
 // api/controllers/LocationController.js
 var location = LocationService.create('google', {
-  provider: {
-    apiKey: '<GOOGLE_API_KEY>'
-  }
+  apiKey: '<GOOGLE_API_KEY>'
 });
 
 module.exports = {
   address: function(req, res) {
     google
-      .address(req.param('longitude'), req.param('latitude'))
+      .geocode(req.param('address'))
       .then(res.ok)
       .catch(res.serverError);
   }
@@ -59,7 +57,47 @@ module.exports = {
 
 Each of location instances has following methods:
 
+### geocode(address)
+
+Get latitude and longitude of specific address. Returns Promise.
+
+`address` - {String} Address that you want to convert to geocode
+
+### reverse(latitude, longitude)
+
+Get address representation from latitude and longitude. Returns Promise.
+
+`latitude` - {Number} Latitude in coordinates
+
+`longitude` - {Number} Longitude in coordinates
+
 ## Examples
+
+### Get latitude and longitude of address
+
+```javascript
+var location = LocationService.create('google', {
+  apiKey: '<GOOGLE_API_KEY>'
+});
+
+location
+  .geocode('Kirovohrad, Ukraine')
+  .then(console.log.bind(console))
+  .catch(console.error.bind(console));
+```
+
+### Get address from latitude and longitude
+
+```javascript
+var location = LocationService.create('google', {
+  apiKey: '<GOOGLE_API_KEY>'
+});
+
+location
+  .reverse(0, 0)
+  .then(console.log.bind(console))
+  .catch(console.error.bind(console));
+```
 
 ## License
 
