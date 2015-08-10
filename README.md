@@ -16,7 +16,7 @@ Service for Sails framework with Location features.
 - TomTom
 - NominatimMapQuest
 - OpenCage
-- SmartyStreet
+- SmartyStreets
 - GeoCodio
 - Yandex
 
