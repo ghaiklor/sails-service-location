@@ -6,6 +6,20 @@ Service for Sails framework with Location features.
 
 ## List of supported location providers
 
+- Google
+- FreeGeoIP
+- DataScienceToolkit
+- OpenStreetMap
+- MapQuest
+- OpenMapQuest
+- Agol
+- TomTom
+- NominatimMapQuest
+- OpenCage
+- SmartyStreet
+- GeoCodio
+- Yandex
+
 ## Getting Started
 
 Install this module.
