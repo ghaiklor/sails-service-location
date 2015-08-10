@@ -9,7 +9,7 @@ describe('BaseLocation', function () {
     assert.isFunction(BaseLocation.prototype.getProvider);
     assert.isFunction(BaseLocation.prototype.setProvider);
     assert.isFunction(BaseLocation.prototype.geocode);
-    assert.isFunction(BaseLocation.prototype.reverseGeocode);
+    assert.isFunction(BaseLocation.prototype.reverse);
   });
 
   it('Should properly make objects configurable', function () {
