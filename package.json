@@ -31,6 +31,8 @@
     "sinon": "^1.15.4"
   },
   "dependencies": {
+    "bluebird": "^2.9.34",
+    "lodash": "^3.10.1",
     "node-geocoder": "^2.22.0"
   }
 }
