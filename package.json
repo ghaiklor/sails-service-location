@@ -8,9 +8,26 @@
   "scripts": {
     "test": "istanbul cover _mocha"
   },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ghaiklor/sails-service-location.git"
+  },
+  "keywords": [
+    "sails",
+    "service",
+    "location"
+  ],
+  "bugs": {
+    "url": "https://github.com/ghaiklor/sails-service-location/issues"
+  },
+  "homepage": "https://github.com/ghaiklor/sails-service-location#readme",
   "devDependencies": {
-    "chai": "*",
-    "istanbul": "*",
-    "mocha": "*"
+    "chai": "^3.2.0",
+    "istanbul": "^0.3.17",
+    "mocha": "^2.2.5",
+    "sinon": "^1.15.4"
   }
 }
