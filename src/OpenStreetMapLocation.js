@@ -1,36 +1,29 @@
-var geocoder = require('node-geocoder');
-var util = require('util');
-var BaseLocation = require('./BaseLocation');
+import geocoder from 'node-geocoder';
+import BaseLocation from './BaseLocation';
 
-util.inherits(OpenStreetMapLocation, BaseLocation);
+export default class OpenStreetMapLocation extends BaseLocation {
+  constructor(...args) {
+    super(...args);
 
-/**
- * Create GM instance
- * @constructor
- */
-function OpenStreetMapLocation() {
-  BaseLocation.apply(this, arguments);
+    this.setProvider(geocoder('openstreetmap', 'http', this.get()));
+  }
 
-  this.setProvider(geocoder('openstreetmap', 'http', this.get()));
+  /**
+   * Geocode address and get latitude\longitude for it
+   * @param {String} address
+   * @returns {Promise}
+   */
+  geocode(address) {
+    return this.getProvider().geocode(address);
+  }
+
+  /**
+   * Reverse geocode to address
+   * @param {Number} latitude
+   * @param {Number} longitude
+   * @returns {Promise}
+   */
+  reverse(latitude, longitude) {
+    return this.getProvider().reverse({lat: latitude, lon: longitude});
+  }
 }
-
-/**
- * Geocode address and get latitude\longitude for it
- * @param {String} address
- * @returns {Promise}
- */
-OpenStreetMapLocation.prototype.geocode = function (address) {
-  return this.getProvider().geocode(address);
-};
-
-/**
- * Reverse geocode to address
- * @param {Number} latitude
- * @param {Number} longitude
- * @returns {Promise}
- */
-OpenStreetMapLocation.prototype.reverse = function (latitude, longitude) {
-  return this.getProvider().reverse({lat: latitude, lon: longitude});
-};
-
-module.exports = OpenStreetMapLocation;
