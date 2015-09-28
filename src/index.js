@@ -1,45 +1,43 @@
-var locations = {
-  agol: require('./AgolLocation'),
-  datasciencetoolkit: require('./DataScienceToolkitLocation'),
-  freegeoip: require('./FreeGeoIpLocation'),
-  geocodio: require('./GeoCodioLocation'),
-  google: require('./GoogleLocation'),
-  mapquest: require('./MapQuestLocation'),
-  nominatimmapquest: require('./NominatimMapQuestLocation'),
-  opencage: require('./OpenCageLocation'),
-  openmapquest: require('./OpenMapQuestLocation'),
-  openstreetmap: require('./OpenStreetMapLocation'),
-  smartystreets: require('./SmartyStreetsLocation'),
-  tomtom: require('./TomTomLocation'),
-  yandex: require('./YandexLocation')
+import AgolLocation from './AgolLocation';
+import DataScienceToolkitLocation from './DataScienceToolkitLocation';
+import FreeGeoIpLocation from './FreeGeoIpLocation';
+import GeoCodioLocation from './GeoCodioLocation';
+import GoogleLocation from './GoogleLocation';
+import MapQuestLocation from './MapQuestLocation';
+import NominatimMapQuestLocation from './NominatimMapQuestLocation';
+import OpenCageLocation from './OpenCageLocation';
+import OpenMapQuestLocation from './OpenMapQuestLocation';
+import OpenStreetMapLocation from './OpenStreetMapLocation';
+import SmartyStreetsLocation from './SmartyStreetsLocation';
+import TomTomLocation from './TomTomLocation';
+import YandexLocation from './YandexLocation';
+
+const location = {
+  agol: AgolLocation,
+  datasciencetoolkit: DataScienceToolkitLocation,
+  freegeoip: FreeGeoIpLocation,
+  geocodio: GeoCodioLocation,
+  google: GoogleLocation,
+  mapquest: MapQuestLocation,
+  nominatimmapquest: NominatimMapQuestLocation,
+  opencage: OpenCageLocation,
+  openmapquest: OpenMapQuestLocation,
+  openstreetmap: OpenStreetMapLocation,
+  smartystreets: SmartyStreetsLocation,
+  tomtom: TomTomLocation,
+  yandex: YandexLocation
 };
 
-module.exports = {
-  /**
-   * Create specified location instance
-   * @param {String} type
-   * @param {Object} config
-   * @returns {*}
-   */
-  create: function (type, config) {
-    if (locations[type.toLowerCase()] instanceof Function) {
-      return new locations[type.toLowerCase()](config);
-    } else {
-      throw new Error('Unrecognized type -> ' + type);
-    }
-  },
-
-  AgolLocation: locations.agol,
-  DataScienceToolkitLocation: locations.datasciencetoolkit,
-  FreeGeoIpLocation: locations.freegeoip,
-  GeoCodioLocation: locations.geocodio,
-  GoogleLocation: locations.google,
-  MapQuestLocation: locations.mapquest,
-  NominatimMapQuestLocation: locations.nominatimmapquest,
-  OpenCageLocation: locations.opencage,
-  OpenMapQuestLocation: locations.openmapquest,
-  OpenStreetMapLocation: locations.openstreetmap,
-  SmartyStreetsLocation: locations.smartystreets,
-  TomTomLocation: locations.tomtom,
-  YandexLocation: locations.yandex
-};
+/**
+ * Create specified location instance
+ * @param {String} type
+ * @param {Object} config
+ * @returns {*}
+ */
+export default function (type, config) {
+  if (location[type.toLowerCase()] instanceof Function) {
+    return new location[type.toLowerCase()](config);
+  } else {
+    throw new Error('Unrecognized type -> ' + type);
+  }
+}
