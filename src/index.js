@@ -31,7 +31,7 @@ const location = {
 /**
  * Create specified location instance
  * @param {String} type
- * @param {Object} config
+ * @param {Object} [config]
  * @returns {*}
  */
 export default function (type, config) {
