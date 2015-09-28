@@ -1,20 +1,20 @@
-var assert = require('chai').assert;
-var LocationService = require('../../');
-var AgolLocation = LocationService.AgolLocation;
-var DataScienceToolkitLocation = LocationService.DataScienceToolkitLocation;
-var FreeGeoIpLocation = LocationService.FreeGeoIpLocation;
-var GeoCodioLocation = LocationService.GeoCodioLocation;
-var GoogleLocation = LocationService.GoogleLocation;
-var MapQuestLocation = LocationService.MapQuestLocation;
-var NominatimMapQuestLocation = LocationService.NominatimMapQuestLocation;
-var OpenCageLocation = LocationService.OpenCageLocation;
-var OpenMapQuestLocation = LocationService.OpenMapQuestLocation;
-var OpenStreetMapLocation = LocationService.OpenStreetMapLocation;
-var SmartyStreetsLocation = LocationService.SmartyStreetsLocation;
-var TomTomLocation = LocationService.TomTomLocation;
-var YandexLocation = LocationService.YandexLocation;
+import { assert } from 'chai';
+import LocationService from '../../src/index';
+import AgolLocation from '../../src/AgolLocation';
+import DataScienceToolkitLocation from '../../src/DataScienceToolkitLocation';
+import FreeGeoIpLocation from '../../src/FreeGeoIpLocation';
+import GeoCodioLocation from '../../src/GeoCodioLocation';
+import GoogleLocation from '../../src/GoogleLocation';
+import MapQuestLocation from '../../src/MapQuestLocation';
+import NominatimMapQuestLocation from '../../src/NominatimMapQuestLocation';
+import OpenCageLocation from '../../src/OpenCageLocation';
+import OpenMapQuestLocation from '../../src/OpenMapQuestLocation';
+import OpenStreetMapLocation from '../../src/OpenStreetMapLocation';
+import SmartyStreetsLocation from '../../src/SmartyStreetsLocation';
+import TomTomLocation from '../../src/TomTomLocation';
+import YandexLocation from '../../src/YandexLocation';
 
-var PROVIDER_CONFIG = {
+const PROVIDER_CONFIG = {
   client_id: 'test',
   client_secret: 'test',
   apiKey: 'test',
@@ -22,31 +22,28 @@ var PROVIDER_CONFIG = {
   auth_token: 'test'
 };
 
-describe('LocationService', function () {
-  it('Should properly export', function () {
-    assert.isObject(LocationService);
-    assert.isFunction(LocationService.create);
+describe('LocationService', () => {
+  it('Should properly export', () => {
+    assert.isFunction(LocationService);
   });
 
-  it('Should properly create location instances', function () {
-    assert.instanceOf(LocationService.create('Agol', PROVIDER_CONFIG), AgolLocation);
-    assert.instanceOf(LocationService.create('DataScienceToolkit', PROVIDER_CONFIG), DataScienceToolkitLocation);
-    assert.instanceOf(LocationService.create('FreeGeoIp', PROVIDER_CONFIG), FreeGeoIpLocation);
-    assert.instanceOf(LocationService.create('GeoCodio', PROVIDER_CONFIG), GeoCodioLocation);
-    assert.instanceOf(LocationService.create('Google', PROVIDER_CONFIG), GoogleLocation);
-    assert.instanceOf(LocationService.create('MapQuest', PROVIDER_CONFIG), MapQuestLocation);
-    assert.instanceOf(LocationService.create('NominatimMapQuest', PROVIDER_CONFIG), NominatimMapQuestLocation);
-    assert.instanceOf(LocationService.create('OpenCage', PROVIDER_CONFIG), OpenCageLocation);
-    assert.instanceOf(LocationService.create('OpenMapQuest', PROVIDER_CONFIG), OpenMapQuestLocation);
-    assert.instanceOf(LocationService.create('OpenStreetMap', PROVIDER_CONFIG), OpenStreetMapLocation);
-    assert.instanceOf(LocationService.create('SmartyStreets', PROVIDER_CONFIG), SmartyStreetsLocation);
-    assert.instanceOf(LocationService.create('TomTom', PROVIDER_CONFIG), TomTomLocation);
-    assert.instanceOf(LocationService.create('Yandex', PROVIDER_CONFIG), YandexLocation);
+  it('Should properly create location instances', () => {
+    assert.instanceOf(LocationService('Agol', PROVIDER_CONFIG), AgolLocation);
+    assert.instanceOf(LocationService('DataScienceToolkit', PROVIDER_CONFIG), DataScienceToolkitLocation);
+    assert.instanceOf(LocationService('FreeGeoIp', PROVIDER_CONFIG), FreeGeoIpLocation);
+    assert.instanceOf(LocationService('GeoCodio', PROVIDER_CONFIG), GeoCodioLocation);
+    assert.instanceOf(LocationService('Google', PROVIDER_CONFIG), GoogleLocation);
+    assert.instanceOf(LocationService('MapQuest', PROVIDER_CONFIG), MapQuestLocation);
+    assert.instanceOf(LocationService('NominatimMapQuest', PROVIDER_CONFIG), NominatimMapQuestLocation);
+    assert.instanceOf(LocationService('OpenCage', PROVIDER_CONFIG), OpenCageLocation);
+    assert.instanceOf(LocationService('OpenMapQuest', PROVIDER_CONFIG), OpenMapQuestLocation);
+    assert.instanceOf(LocationService('OpenStreetMap', PROVIDER_CONFIG), OpenStreetMapLocation);
+    assert.instanceOf(LocationService('SmartyStreets', PROVIDER_CONFIG), SmartyStreetsLocation);
+    assert.instanceOf(LocationService('TomTom', PROVIDER_CONFIG), TomTomLocation);
+    assert.instanceOf(LocationService('Yandex', PROVIDER_CONFIG), YandexLocation);
   });
 
-  it('Should properly throw error on unrecognized type', function () {
-    assert.throws(function () {
-      LocationService.create('NOT_EXISTS');
-    }, Error);
+  it('Should properly throw error on unrecognized type', () => {
+    assert.throws(() => LocationService('NOT_EXISTS'), Error);
   });
 });

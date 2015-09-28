@@ -1,19 +1,13 @@
-var assert = require('chai').assert;
-var BaseLocation = require('../../lib/BaseLocation');
+import { assert } from 'chai';
+import BaseLocation from '../../src/BaseLocation';
 
-describe('BaseLocation', function () {
-  it('Should properly export', function () {
+describe('BaseLocation', () => {
+  it('Should properly export', () => {
     assert.isFunction(BaseLocation);
-    assert.isFunction(BaseLocation.prototype.get);
-    assert.isFunction(BaseLocation.prototype.set);
-    assert.isFunction(BaseLocation.prototype.getProvider);
-    assert.isFunction(BaseLocation.prototype.setProvider);
-    assert.isFunction(BaseLocation.prototype.geocode);
-    assert.isFunction(BaseLocation.prototype.reverse);
   });
 
-  it('Should properly make objects configurable', function () {
-    var location = new BaseLocation();
+  it('Should properly make objects configurable', () => {
+    let location = new BaseLocation();
 
     assert.notOk(location.get('foo'));
     assert.instanceOf(location.set('foo', 'bar'), BaseLocation);
@@ -24,8 +18,8 @@ describe('BaseLocation', function () {
     assert.equal(location.get('foo'), 'bar');
   });
 
-  it('Should properly create location instance with pre-defined config', function () {
-    var location = new BaseLocation({
+  it('Should properly create location instance with pre-defined config', () => {
+    let location = new BaseLocation({
       foo: 'bar',
       obj: {
         foo: 'bar'
@@ -38,10 +32,10 @@ describe('BaseLocation', function () {
     assert.notOk(location.get('NOT_EXISTS'));
   });
 
-  it('Should properly get/set provider', function () {
-    var location = new BaseLocation();
+  it('Should properly get/set provider', () => {
+    let location = new BaseLocation();
 
-    assert.notOk(location.getProvider());
+    assert.deepEqual(location.getProvider(), {});
     assert.instanceOf(location.setProvider('PROVIDER'), BaseLocation);
     assert.equal(location.getProvider(), 'PROVIDER');
   });

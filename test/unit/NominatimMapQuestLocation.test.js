@@ -1,26 +1,23 @@
-var assert = require('chai').assert;
-var sinon = require('sinon');
-var Promise = require('bluebird');
-var NominatimMapQuestLocation = require('../../lib/NominatimMapQuestLocation');
-var geocode = require('../fixtures/geocode.json');
+import { assert } from 'chai';
+import sinon from 'sinon';
+import NominatimMapQuestLocation from '../../src/NominatimMapQuestLocation';
+import geocode from '../fixtures/geocode.json';
 
-var PROVIDER_CONFIG = {};
+const PROVIDER_CONFIG = {};
 
-describe('NominatimMapQuestLocation', function () {
-  it('Should properly export', function () {
+describe('NominatimMapQuestLocation', () => {
+  it('Should properly export', () => {
     assert.isFunction(NominatimMapQuestLocation);
   });
 
-  it('Should properly geocode address', function (done) {
-    var location = new NominatimMapQuestLocation(PROVIDER_CONFIG);
+  it('Should properly geocode address', done => {
+    let location = new NominatimMapQuestLocation(PROVIDER_CONFIG);
 
-    sinon.stub(location.getProvider(), 'geocode', function (address) {
-      return Promise.resolve(geocode);
-    });
+    sinon.stub(location.getProvider(), 'geocode', address => Promise.resolve(geocode));
 
     location
       .geocode('Kirovohrad, Ukraine')
-      .then(function (result) {
+      .then(result => {
         assert.deepEqual(result, geocode);
         assert.ok(location.getProvider().geocode.calledOnce);
         assert.equal(location.getProvider().geocode.getCall(0).args[0], 'Kirovohrad, Ukraine');
@@ -32,16 +29,14 @@ describe('NominatimMapQuestLocation', function () {
       .catch(done);
   });
 
-  it('Should properly reverse latitude/longitude', function (done) {
-    var location = new NominatimMapQuestLocation(PROVIDER_CONFIG);
+  it('Should properly reverse latitude/longitude', done => {
+    let location = new NominatimMapQuestLocation(PROVIDER_CONFIG);
 
-    sinon.stub(location.getProvider(), 'reverse', function (latitude, longitude) {
-      return Promise.resolve('Kirovohrad, Ukraine');
-    });
+    sinon.stub(location.getProvider(), 'reverse', (latitude, longitude) => Promise.resolve('Kirovohrad, Ukraine'));
 
     location
       .reverse(48.5131978440005, 32.25969628100046)
-      .then(function (result) {
+      .then(result => {
         assert.equal(result, 'Kirovohrad, Ukraine');
         assert.ok(location.getProvider().reverse.calledOnce);
         assert.deepEqual(location.getProvider().reverse.getCall(0).args[0], {

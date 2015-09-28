@@ -1,28 +1,25 @@
-var assert = require('chai').assert;
-var sinon = require('sinon');
-var Promise = require('bluebird');
-var TomTomLocation = require('../../lib/TomTomLocation');
-var geocode = require('../fixtures/geocode.json');
+import { assert } from 'chai';
+import sinon from 'sinon';
+import TomTomLocation from '../../src/TomTomLocation';
+import geocode from '../fixtures/geocode.json';
 
-var PROVIDER_CONFIG = {
+const PROVIDER_CONFIG = {
   apiKey: 'test'
 };
 
-describe('TomTomLocation', function () {
-  it('Should properly export', function () {
+describe('TomTomLocation', () => {
+  it('Should properly export', () => {
     assert.isFunction(TomTomLocation);
   });
 
-  it('Should properly geocode address', function (done) {
-    var location = new TomTomLocation(PROVIDER_CONFIG);
+  it('Should properly geocode address', done => {
+    let location = new TomTomLocation(PROVIDER_CONFIG);
 
-    sinon.stub(location.getProvider(), 'geocode', function (address) {
-      return Promise.resolve(geocode);
-    });
+    sinon.stub(location.getProvider(), 'geocode', address => Promise.resolve(geocode));
 
     location
       .geocode('Kirovohrad, Ukraine')
-      .then(function (result) {
+      .then(result => {
         assert.deepEqual(result, geocode);
         assert.ok(location.getProvider().geocode.calledOnce);
         assert.equal(location.getProvider().geocode.getCall(0).args[0], 'Kirovohrad, Ukraine');
@@ -34,16 +31,14 @@ describe('TomTomLocation', function () {
       .catch(done);
   });
 
-  it('Should properly reverse latitude/longitude', function (done) {
-    var location = new TomTomLocation(PROVIDER_CONFIG);
+  it('Should properly reverse latitude/longitude', done => {
+    let location = new TomTomLocation(PROVIDER_CONFIG);
 
-    sinon.stub(location.getProvider(), 'reverse', function (latitude, longitude) {
-      return Promise.resolve('Kirovohrad, Ukraine');
-    });
+    sinon.stub(location.getProvider(), 'reverse', (latitude, longitude) => Promise.resolve('Kirovohrad, Ukraine'));
 
     location
       .reverse(48.5131978440005, 32.25969628100046)
-      .then(function (result) {
+      .then(result => {
         assert.equal(result, 'Kirovohrad, Ukraine');
         assert.ok(location.getProvider().reverse.calledOnce);
         assert.deepEqual(location.getProvider().reverse.getCall(0).args[0], {
