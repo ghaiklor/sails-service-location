@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.0.0
+
+- Migration from ES5 to ES6 syntax;
+- Remove `.create()` method from LocationService. LocationService is a function itself now;
+- Update dependencies and pin versions;
+
 ## 2.0.0
 
 - Initial release;
