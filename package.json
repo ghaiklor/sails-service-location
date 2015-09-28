@@ -3,9 +3,11 @@
   "version": "2.0.0",
   "description": "Service for Sails framework with Location features",
   "license": "MIT",
-  "main": "index.js",
+  "main": "lib/index.js",
   "author": "ghaiklor",
   "scripts": {
+    "compile": "babel src --out-dir lib",
+    "prepublish": "npm run compile",
     "test": "istanbul cover _mocha"
   },
   "directories": {
