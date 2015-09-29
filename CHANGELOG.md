@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.1.0
+
+- Update `node-geocoder` to v3.2.0;
+
 ## 3.0.0
 
 - Migration from ES5 to ES6 syntax;
