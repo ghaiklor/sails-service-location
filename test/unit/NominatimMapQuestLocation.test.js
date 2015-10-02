@@ -3,7 +3,9 @@ import sinon from 'sinon';
 import NominatimMapQuestLocation from '../../src/NominatimMapQuestLocation';
 import geocode from '../fixtures/geocode.json';
 
-const PROVIDER_CONFIG = {};
+const PROVIDER_CONFIG = {
+  apiKey: 'test'
+};
 
 describe('NominatimMapQuestLocation', () => {
   it('Should properly export', () => {

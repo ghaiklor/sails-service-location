@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.1.1
+
+- Update `node-geocoder` to v3.3.0;
+
 ## 3.1.0
 
 - Update `node-geocoder` to v3.2.0;
