@@ -26,6 +26,8 @@ Service for Sails framework with Location features.
 - SmartyStreets
 - GeoCodio
 - Yandex
+- Here
+- Teleport
 
 ## Getting Started
 

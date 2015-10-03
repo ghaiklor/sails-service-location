@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.2.0
+
+- Add Here location provider;
+- Add Teleport location provider;
+- Update `node-geocoder` to v3.4.0;
+
 ## 3.1.1
 
 - Update `node-geocoder` to v3.3.0;
