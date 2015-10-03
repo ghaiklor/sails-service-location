@@ -10,6 +10,7 @@ import OpenCageLocation from './OpenCageLocation';
 import OpenMapQuestLocation from './OpenMapQuestLocation';
 import OpenStreetMapLocation from './OpenStreetMapLocation';
 import SmartyStreetsLocation from './SmartyStreetsLocation';
+import TeleportLocation from './TeleportLocation';
 import TomTomLocation from './TomTomLocation';
 import YandexLocation from './YandexLocation';
 
@@ -26,6 +27,7 @@ const location = {
   openmapquest: OpenMapQuestLocation,
   openstreetmap: OpenStreetMapLocation,
   smartystreets: SmartyStreetsLocation,
+  teleport: TeleportLocation,
   tomtom: TomTomLocation,
   yandex: YandexLocation
 };
