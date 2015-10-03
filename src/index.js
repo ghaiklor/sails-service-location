@@ -3,6 +3,7 @@ import DataScienceToolkitLocation from './DataScienceToolkitLocation';
 import FreeGeoIpLocation from './FreeGeoIpLocation';
 import GeoCodioLocation from './GeoCodioLocation';
 import GoogleLocation from './GoogleLocation';
+import HereLocation from './HereLocation';
 import MapQuestLocation from './MapQuestLocation';
 import NominatimMapQuestLocation from './NominatimMapQuestLocation';
 import OpenCageLocation from './OpenCageLocation';
@@ -18,6 +19,7 @@ const location = {
   freegeoip: FreeGeoIpLocation,
   geocodio: GeoCodioLocation,
   google: GoogleLocation,
+  here: HereLocation,
   mapquest: MapQuestLocation,
   nominatimmapquest: NominatimMapQuestLocation,
   opencage: OpenCageLocation,
