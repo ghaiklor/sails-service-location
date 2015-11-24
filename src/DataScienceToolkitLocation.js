@@ -2,8 +2,8 @@ import geocoder from 'node-geocoder';
 import BaseLocation from './BaseLocation';
 
 export default class DataScienceToolkitLocation extends BaseLocation {
-  constructor(...args) {
-    super(...args);
+  constructor(config) {
+    super(config);
 
     this.setProvider(geocoder('datasciencetoolkit', 'http', this.get()));
   }

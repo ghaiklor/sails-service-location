@@ -2,8 +2,8 @@ import geocoder from 'node-geocoder';
 import BaseLocation from './BaseLocation';
 
 export default class OpenStreetMapLocation extends BaseLocation {
-  constructor(...args) {
-    super(...args);
+  constructor(config) {
+    super(config);
 
     this.setProvider(geocoder('openstreetmap', 'http', this.get()));
   }

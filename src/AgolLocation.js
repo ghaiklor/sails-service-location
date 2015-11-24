@@ -2,8 +2,8 @@ import geocoder from 'node-geocoder';
 import BaseLocation from './BaseLocation';
 
 export default class AgolLocation extends BaseLocation {
-  constructor(...args) {
-    super(...args);
+  constructor(config) {
+    super(config);
 
     this.setProvider(geocoder('agol', 'https', this.get()));
   }
