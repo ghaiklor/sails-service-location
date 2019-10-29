@@ -27,7 +27,7 @@
   "homepage": "https://github.com/ghaiklor/sails-service-location#readme",
   "dependencies": {
     "lodash": "4.17.15",
-    "node-geocoder": "3.24.0"
+    "node-geocoder": "3.25.0"
   },
   "devDependencies": {
     "babel-cli": "6.26.0",
